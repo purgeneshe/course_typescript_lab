@@ -15,6 +15,10 @@
     {
       "name": "model",
       "task": 20
+    },
+    {
+      "name": "thread",
+      "task": 25
     }
   ],
   "tests": [
@@ -44,15 +48,24 @@
       "time": 1800,
       "blocks": [
         {
-          "block": "basic",
-          "task": 1
-        },
-        {
-          "block": "objects",
+          "block": "basic objects",
           "task": 1
         },
         {
           "block": "classes",
+          "task": 3
+        }
+      ]
+    },
+    {
+      "time": 1800,
+      "blocks": [
+        {
+          "block": "basic objects classes",
+          "task": 2
+        },
+        {
+          "block": "model",
           "task": 2
         }
       ]
@@ -61,20 +74,12 @@
       "time": 1800,
       "blocks": [
         {
-          "block": "basic",
-          "task": 1
+          "block": "basic objects classes model",
+          "task": 2
         },
         {
-          "block": "objects",
-          "task": 1
-        },
-        {
-          "block": "classes",
-          "task": 1
-        },
-        {
-          "block": "model",
-          "task": 1
+          "block": "thread",
+          "task": 2
         }
       ]
     }
