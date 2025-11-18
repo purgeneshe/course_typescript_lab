@@ -2,7 +2,9 @@
   "blocks": [
     {
       "name": "basic",
-      "task": 40
+      "task": 40,
+      "template": "{block}{task}.js",
+      "testTemplate": "{block}{task}.test.js"
     },
     {
       "name": "objects",
