@@ -7,9 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test": "vitest",
-    "t:add": "tsx ./utils/new_task.ts",
-    "t:test": "tsx ./utils/test.ts"
+    "test": "vitest"
   },
   "devDependencies": {
     "@types/node": "^24.0.12",
