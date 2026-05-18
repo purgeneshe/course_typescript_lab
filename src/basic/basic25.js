@@ -1,7 +1,13 @@
-/* 
-	Реализуйте функцию removeFirstOccurrence(arr, value), которая удаляет первое вхождение указанного элемента из массива
-*/
+export function removeFirstOccurrence(arr, value) {
+  const result = [];
+  const indexToRemove = arr.indexOf(value);
 
-export function removeFirstOccurrence (arr, value) {
-  return arr
+  // Копируем все элементы, кроме того, чей индекс равен первому вхождению value
+  for (let i = 0; i < arr.length; i++) {
+    if (i !== indexToRemove) {
+      result.push(arr[i]);
+    }
+  }
+
+  return result;
 }
