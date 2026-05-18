@@ -1,8 +1,5 @@
-/* 
-	Напишите функцию replace_word(sentence, old_word, new_word), заменяющую старое слово новым словом в предложении.
-*/
-
 export function replace_word(sentence, old_word, new_word) {
-    return "";
+  if (old_word === '') return sentence;
+  // Заменяем старое слово новым
+  return sentence.split(old_word).join(new_word);
 }
-
