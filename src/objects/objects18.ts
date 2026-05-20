@@ -1,10 +1,13 @@
-/* 
-	Реализовать метод uppercaseProfileNames в объекте user, который возвращает новый объект, такого же типа как и исходный, но со значением name в верхнем регистре.
-*/
-
 export const user = {
-    profile: { name: 'Alice', age: 30 },
-    uppercaseProfileNames() {
-        return this;
-    }
+  profile: { name: 'Alice', age: 30 },
+  uppercaseProfileNames() {
+    // Возвращаем новый объект, создавая глубокую копию profile и переводя name в верхний регистр
+    return {
+      ...this,
+      profile: {
+        ...this.profile,
+        name: this.profile.name.toUpperCase(),
+      },
+    };
+  },
 };
