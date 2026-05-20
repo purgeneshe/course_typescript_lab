@@ -1,7 +1,3 @@
-/* 	
-	В объекте user создать метод equal, который будет проверять равенство объектов. При передачи аргументов метод должен возвращать копию объекта с новыми значениями свойств.
-*/
-
 export type User = {
   name: string;
   age: number;
@@ -12,8 +8,7 @@ export const user: User = {
   name: "John",
   age: 30,
   equal(other) {
-	return true;
+    // Сравниваем имя и возраст текущего объекта с переданным
+    return this.name === other.name && this.age === other.age;
   }
 };
-
-
