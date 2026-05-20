@@ -1,12 +1,14 @@
-/* 
-	Реализовать функцию addToCollection<T, K extends string>(obj: Record<K, T[]>, collectionName: K, element: T): Record<K, T[]>, которая добавляет элемент в существующую коллекцию в объекте.
-*/
-
 export function addToCollection<T, K extends string>(
-    obj: Record<K, T[]>,
-    collectionName: K,
-    element: T
+  obj: Record<K, T[]>,
+  collectionName: K,
+  element: T
 ): Record<K, T[]> {
-    return obj;
-}
+  // Создаем копию существующего массива коллекции с новым элементом
+  const updatedCollection = [...obj[collectionName], element];
 
+  // Возвращаем новый объект, сохраняя иммутабельность
+  return {
+    ...obj,
+    [collectionName]: updatedCollection,
+  };
+}
