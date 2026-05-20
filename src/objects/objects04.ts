@@ -1,7 +1,3 @@
-/* 	
-	В объекте user создать метод equal, который будет проверять структурное равенство объектов. При передачи аргументов метод должен возвращать копию объекта с новыми значениями свойств. 
-*/
-
 export type Address = {
   street: string;
   building: number;
@@ -15,14 +11,14 @@ export type User = {
   equal: (other: User) => boolean;
 };
 
-const address = {
+const address: Address = {
   street: "Main Street",
   building: 123,
   equal(other: Address) {
-	return (
-		this.street === other.street &&
-		this.building === other.building
-	);
+    return (
+      this.street === other.street &&
+      this.building === other.building
+    );
   },
 };
 
@@ -31,6 +27,11 @@ export const user: User = {
   age: 30,
   address: address,
   equal(other: User) {
-	  return true;
+    // Сравниваем поля name, age, а также вызываем equal для сравнения адреса
+    return (
+      this.name === other.name &&
+      this.age === other.age &&
+      this.address.equal(other.address)
+    );
   },
 };
