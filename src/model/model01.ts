@@ -1,17 +1,22 @@
-/* 
-	Создать класс Dog, который наследует от Animal и реализует метод bark() (выводит "Woof!").
-*/
-
 export class Animal {
   name: string;
-  
+   
   constructor(name: string) {
     this.name = name;
   }
-  
+   
   makeSound(): void {
     console.log("Some generic sound");
   }
 }
 
-export class Dog 
+export class Dog extends Animal {
+  constructor(name: string) {
+    super(name);
+  }
+
+  // Реализуем метод bark, который выводит "Woof!"
+  bark(): void {
+    console.log("Woof!");
+  }
+}
