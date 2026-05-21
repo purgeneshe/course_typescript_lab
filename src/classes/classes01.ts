@@ -1,14 +1,13 @@
-/* 
-	Напишите конструктор класса Person, который принимает три аргумента: имя, фамилию и возраст. Используйте модульность доступа (модификаторы доступа public, private) для соответствующих полей.
-*/
-
 export class Person {
     firstName: string;
     lastName: string;
     private age: number;
 
     constructor(firstName: string, lastName: string, age: number) {
-        
+        // Присваиваем значения параметров полям класса, firstName/lastName public (по умолчанию), age private
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
     }
 
     getFullName(): string {
