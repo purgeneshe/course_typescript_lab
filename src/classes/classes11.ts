@@ -1,6 +1,3 @@
-/* 	Реализовать параметризованный класс для хранения коллекции элементов. Класс должен содержит методы add, remove и contains. На параметр класса накладывается ограничение, объекты класса должны содержать метод equals другого объекта класса. Нужно реализовать метод count, который подсчитывает количество элементов в коллекции, равных заданному.
-*/
-
 export class Collection<T extends { equals(other: T): boolean }> {
   private items: T[] = [];
 
@@ -21,6 +18,7 @@ export class Collection<T extends { equals(other: T): boolean }> {
   }
 
   count(item: T): number {
-    
+    // Подсчитываем, сколько элементов равны заданному, используя метод equals из ограничения типа
+    return this.items.filter((i) => i.equals(item)).length;
   }
 }
