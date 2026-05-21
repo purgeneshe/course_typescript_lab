@@ -1,7 +1,3 @@
-/* 
-	Дан параметризованный класс для хранения коллекции элементов. Класс должен содержит методы add, remove и contains. На параметр класса накладывается ограничение, объекты класса должны содержать метод isGreaterThan другого объекта класса. Реализуйте метод getGreatest, возращающий наибольший элемент коллекции.
-*/
-
 export class Collection<T extends { isGreaterThan(other: T): boolean }> {
     private items: T[] = [];
 
@@ -26,6 +22,7 @@ export class Collection<T extends { isGreaterThan(other: T): boolean }> {
     }
 
     public getGreatest(): T | undefined {
+        // Находим наибольший элемент, сравнивая через isGreaterThan
         let greatest = this.items[0];
         for (let i = 1; i < this.items.length; i++) {
             if (this.items[i].isGreaterThan(greatest)) {
