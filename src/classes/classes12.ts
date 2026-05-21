@@ -1,7 +1,3 @@
-/* 
-	Дан параметризованный класс Pair, хранящий пару элементов одного и того же типа. В классе есть конструктор, метод установки и чтения каждого элемента. Реализуйте в классе метод swap, который поменяет значения элементов местами.
-*/
-
 export class Pair<T> {
   private first: T;
   private second: T;
@@ -28,7 +24,10 @@ export class Pair<T> {
   }
 
   public swap(): void {
-    
+    // Меняем местами first и second через временную переменную
+    const temp = this.first;
+    this.first = this.second;
+    this.second = temp;
   }
 }
 
