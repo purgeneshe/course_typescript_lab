@@ -1,7 +1,3 @@
-/* 
-	Класс SafeLogger может ослабить постусловия - при пустом сообщении не выбрасывать исключение, а просто не логировать.
-*/
-
 export class Logger {
   log(message: string): void {
     if (!message) throw new Error("Message cannot be empty");
@@ -11,7 +7,8 @@ export class Logger {
 
 export class SafeLogger extends Logger {
   override log(message: string): void {
-     
+    // Ослабляем постусловие: при пустом сообщении просто не логируем, без исключения
+    if (!message) return;
     console.log(message);
   }
 }
