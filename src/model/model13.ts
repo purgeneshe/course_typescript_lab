@@ -1,7 +1,3 @@
-/* 
-	Класс Penguin должен быть совместим с Bird по возвращаемому типу и выводить в консоль "Cannot fly".
-*/
-
 export class Bird {
   fly(): Bird {
     console.log("Flying");
@@ -9,7 +5,10 @@ export class Bird {
   }
 }
 
-
 export class Penguin extends Bird {
-
+  // Переопределяем fly, возвращаем Penguin (для совместимости по типу) и выводим "Cannot fly"
+  override fly(): Penguin {
+    console.log("Cannot fly");
+    return this;
+  }
 }
