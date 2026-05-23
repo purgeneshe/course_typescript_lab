@@ -1,9 +1,18 @@
-/* 
-	Дописать функцию fetchUserWithRetry, которая пытается получить пользователя 3 раза перед тем как сдаться.
-*/
-
 import { fetchUser, type User } from "./promises";
 
-export function fetchUserWithRetry(id: number, maxAttempts = 3): Promise<User> {
-  // TODO: Реализовать retry механизм
+export async function fetchUserWithRetry(id: number, maxAttempts = 3): Promise<User> {
+  let lastError: Error;
+
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      // Пытаемся получить пользователя
+      return await fetchUser(id);
+    } catch (error) {
+      // Сохраняем последнюю ошибку
+      lastError = error instanceof Error ? error : new Error(String(error));
+    }
+  }
+
+  // Если все попытки провалились - бросаем последнюю ошибку
+  throw lastError!;
 }
