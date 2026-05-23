@@ -1,9 +1,11 @@
-/* 
-	Дописать функцию getUserWithFallback, которая пытается получить пользователя с помощью fetchUser, а при ошибке пробует получить данные пользователя c помощью fetchUserData.
-*/
-
 import { fetchUser, fetchUserData, type User } from "./promises";
 
-export function getUserWithFallback(id: number): Promise<User> {
-  // TODO: Реализовать fallback механизм
+export async function getUserWithFallback(id: number): Promise<User> {
+  try {
+    // Сначала пытаемся получить пользователя
+    return await fetchUser(id);
+  } catch {
+    // При ошибке fallback на данные пользователя
+    return await fetchUserData(id);
+  }
 }
