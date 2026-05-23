@@ -1,11 +1,16 @@
-/* 
-	Дописать функцию getUserPostsWithAuthor, которая получает посты пользователя, а затем информацию об авторе каждого поста.
-*/
+import { fetchUser, fetchUserPosts, type Post, type User } from "./promises";
 
-import { fetchUser, fetchUserPosts, type Post } from "./promises";
-import type { User } from "./thread07";
+export async function getUserPostsWithAuthor(userId: number): Promise<Array<Post & { author: User }>> {
+  // Сначала получаем посты пользователя
+  const posts = await fetchUserPosts(userId);
 
-export function getUserPostsWithAuthor(userId: number): Promise<Array<Post & { author: User }>> {
-	// TODO: Реализовать цепочку промисов
+  // Для каждого поста параллельно получаем информацию об авторе
+  const postsWithAuthors = await Promise.all(
+    posts.map(async (post) => {
+      const author = await fetchUser(post.userId);
+      return { ...post, author };
+    })
+  );
 
+  return postsWithAuthors;
 }
