@@ -1,9 +1,11 @@
-/* 
-	Дописать функцию getSafeUserSettings, которая возвращает настройки по умолчанию { theme: "light" } при ошибке.
-*/
-
 import { fetchUserSettings } from "./promises";
 
-export function getSafeUserSettings(id: number): Promise<{ theme: string }> {
-  // TODO: Добавить обработку ошибок с возвратом значений по умолчанию
+export async function getSafeUserSettings(id: number): Promise<{ theme: string }> {
+  try {
+    // Пытаемся получить настройки
+    return await fetchUserSettings(id);
+  } catch {
+    // При ошибке возвращаем значения по умолчанию
+    return { theme: "light" };
+  }
 }
