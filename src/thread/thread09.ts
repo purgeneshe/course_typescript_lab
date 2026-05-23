@@ -1,14 +1,19 @@
-/* 
-	 Допишите функцию withRetry, которая пытается выполнить операцию несколько раз перед тем как сдаться.
-*/
-
 export async function withRetry<T>(
   operation: () => Promise<T>,
   maxAttempts: number = 3
 ): Promise<T> {
-  let lastError: Error;
-  // Ваш код здесь (8-10 строк)
-  // Попытаться выполнить операцию maxAttempts раз
-  // Если все попытки неудачны, бросить последнюю ошибку
+  let lastError: Error = new Error('No attempts made');
+
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      // Пытаемся выполнить операцию
+      return await operation();
+    } catch (error) {
+      // Сохраняем последнюю ошибку
+      lastError = error instanceof Error ? error : new Error(String(error));
+    }
+  }
+
+  // Если все попытки провалились - бросаем последнюю ошибку
   throw lastError;
 }
