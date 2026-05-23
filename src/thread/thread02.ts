@@ -1,8 +1,9 @@
-/* 
-	Допишите функцию парсинга JSON, чтобы она возвращала null при некорректном JSON и логировала ошибку.
-*/
-
 export function parseJsonSafely(jsonString: string): any | null {
-  // Ваш код здесь (3-5 строк)
-  return JSON.parse(jsonString);
+  try {
+    return JSON.parse(jsonString);
+  } catch (error) {
+    // Логируем ошибку и возвращаем null при некорректном JSON
+    console.error(error);
+    return null;
+  }
 }
