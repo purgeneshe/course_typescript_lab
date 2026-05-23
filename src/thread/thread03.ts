@@ -1,8 +1,7 @@
-/* 
-	 Допишите функцию безопасного получения элемента массива, чтобы она возвращала undefined при выходе за границы.
-*/
-
 export function getArrayElement<T>(array: T[], index: number): T | undefined {
-  // Ваш код здесь (3-4 строки)
+  // Проверяем, что индекс в допустимых границах
+  if (index < 0 || index >= array.length) {
+    return undefined;
+  }
   return array[index];
 }
