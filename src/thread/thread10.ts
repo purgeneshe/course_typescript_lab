@@ -1,7 +1,3 @@
-/* 
-	Реализовать функцию XXX
-*/
-
 export class NestedValidationError extends Error {
   constructor(message: string, public path: string[]) {
     super(message);
@@ -21,10 +17,23 @@ export interface Person {
 }
 
 export function validatePerson(person: Person): void {
-  // Ваш код здесь (10-12 строк)
-  // Проверить name (не пустой)
-  // Проверить age (>= 0)
-  // Проверить address.street (не пустой)
-  // Проверить address.city (не пустой)
-  // Для ошибок указать путь в path
+  // Проверяем имя
+  if (!person.name || person.name.trim() === '') {
+    throw new NestedValidationError('Name is required', ['name']);
+  }
+
+  // Проверяем возраст
+  if (person.age < 0) {
+    throw new NestedValidationError('Age must be non-negative', ['age']);
+  }
+
+  // Проверяем улицу
+  if (!person.address.street || person.address.street.trim() === '') {
+    throw new NestedValidationError('Street is required', ['address', 'street']);
+  }
+
+  // Проверяем город
+  if (!person.address.city || person.address.city.trim() === '') {
+    throw new NestedValidationError('City is required', ['address', 'city']);
+  }
 }
